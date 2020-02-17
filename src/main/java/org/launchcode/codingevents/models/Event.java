@@ -42,6 +42,7 @@ public class Event {
                  boolean registrationRequired,
                  int numberOfAttendees,
                  Date date) {
+        this();
         this.name = name;
         this.description = description;
         this.contactEmail = contactEmail;
