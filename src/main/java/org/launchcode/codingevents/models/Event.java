@@ -1,8 +1,9 @@
 package org.launchcode.codingevents.models;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.validation.constraints.*;
+import java.util.Date;
 import java.util.Objects;
 
 public class Event {
@@ -21,16 +22,38 @@ public class Event {
     @Email(message = "Invalid email. Try again.")
     private String contactEmail;
 
-    public Event(String name, String description, String contactEmail) {
+    @NotBlank(message = "Location is required")
+    private String location;
+
+    @AssertTrue(message = "Registration is required")
+    private boolean registrationRequired;
+
+    @Positive(message = "Number of attendees should be more than 0")
+    private int numberOfAttendees;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Future(message = "Event must be in the future")
+    private Date date;
+
+    public Event(String name,
+                 String description,
+                 String contactEmail,
+                 String location,
+                 boolean registrationRequired,
+                 int numberOfAttendees,
+                 Date date) {
         this.name = name;
         this.description = description;
         this.contactEmail = contactEmail;
-        this.id = nextId;
-        nextId++;
+        this.location = location;
+        this.registrationRequired = registrationRequired;
+        this.numberOfAttendees = numberOfAttendees;
+        this.date = date;
     }
 
     public Event() {
-
+        this.id = nextId;
+        nextId++;
     }
 
     public String getName() {
@@ -55,6 +78,38 @@ public class Event {
 
     public void setContactEmail(String contactEmail) {
         this.contactEmail = contactEmail;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public boolean isRegistrationRequired() {
+        return registrationRequired;
+    }
+
+    public void setRegistrationRequired(boolean registrationRequired) {
+        this.registrationRequired = registrationRequired;
+    }
+
+    public int getNumberOfAttendees() {
+        return numberOfAttendees;
+    }
+
+    public void setNumberOfAttendees(int numberOfAttendees) {
+        this.numberOfAttendees = numberOfAttendees;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public int getId() {
