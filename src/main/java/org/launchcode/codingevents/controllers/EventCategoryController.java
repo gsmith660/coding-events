@@ -13,9 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
 
-/**
- * Created by Chris Bay
- */
 @Controller
 @RequestMapping("eventCategories")
 public class EventCategoryController {
@@ -43,7 +40,6 @@ public class EventCategoryController {
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Create Category");
-            model.addAttribute(new EventCategory());
             return "eventCategories/create";
         }
 

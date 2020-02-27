@@ -3,9 +3,7 @@ package org.launchcode.codingevents.models;
 import javax.persistence.Entity;
 import javax.validation.constraints.Size;
 
-/**
- * Created by Chris Bay
- */
+
 @Entity
 public class EventCategory extends AbstractEntity {
 
