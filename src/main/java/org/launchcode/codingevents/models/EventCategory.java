@@ -3,7 +3,6 @@ package org.launchcode.codingevents.models;
 import javax.persistence.Entity;
 import javax.validation.constraints.Size;
 
-
 @Entity
 public class EventCategory extends AbstractEntity {
 
